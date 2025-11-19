@@ -16,21 +16,21 @@
 
 1. **张量并行** (Tensor Parallelism, TP)
 
-![这是图片](/images/图一张量并行（候选）.jpg "张量并行")
+![这是图片](/Co-Inference_Tutorial/images/图一张量并行（候选）.jpg "张量并行")
     - 原理：将单个张量操作（如矩阵乘法）拆分到多个设备上并行计算
     - 适用场景：单层计算过于庞大
     - **优点**：减少单设备计算负载
     - **缺点**：需要设备间频繁通信，延迟高
 
 2. **流水线并行** (Pipeline Parallelism, PP)
-![这是图片](/images/图二流水线并行PP.jpg "张量并行")
+![这是图片](/Co-Inference_Tutorial/images/图二流水线并行PP.jpg "张量并行")
     - 原理：将模型按层拆分为多个阶段，各阶段在不同设备上执行，形成流水线
     - 适用场景：超大规模模型推理
     - **优点**：适合大模型，减少单设备内存压力
     - **缺点**：流水线气泡（bubble）导致设备利用率低
 
 3. **序列并行** (Sequence Parallelism, SP)
-![这是图片](/images/序列并行.png "序列并行")
+![这是图片](/Co-Inference_Tutorial/images/序列并行.png "序列并行")
     - 原理：将长序列输入拆分为多个片段，分别在不同设备上处理
     - 适用场景：长文本生成、超长上下文处理
     - **优点**：适合处理超长序列
@@ -96,7 +96,7 @@ FlexGen的核心目标是：在***单GPU***上实现***高吞吐***大语言模�
 
 
 ### 2.2 三级存储协同架构
-![这是图片](/images/图6.png "三层示意")
+![这是图片](/Co-Inference_Tutorial/images/图6.png "三层示意")
 三级存储角色定义：
 1. GPU内存：
     - 仅保留当前计算所需的最小张量集
@@ -201,7 +201,7 @@ def solve_placement_problem(config, model, batch_size):
 
 #### 2.3.2  Zig-zag block Schedule vs Row-by-row Schedule
 Zig-zag块调度是FlexGen提出的核心创新，其工作原理和行调度的区别如下：
-![这是图片](/images/zig-zag.png "zig-zag")
+![这是图片](/Co-Inference_Tutorial/images/zig-zag.png "zig-zag")
 ***行调度的问题***：
 传统的行调度（row-wise scheduling）在生成推理中效率低下
 - 每生成一个token都需要重新加载整个模型权重
@@ -221,7 +221,7 @@ Zig-zag块调度是FlexGen提出的核心创新，其工作原理和行调度的
     - 峰值内存使用：peak_mem=w+2h⋅bls+4h⋅bls⋅l(s+n)
 	
 #### 2.3.3 Overlap
-![这是图片](/images/algorithm1.png "算法一")
+![这是图片](/Co-Inference_Tutorial/images/algorithm1.png "算法一")
 ***重叠技术的关键点***：
 - 将权重加载、缓存/激活加载、计算等操作并行化
 - 利用计算与I/O的重叠，隐藏传输延迟
@@ -290,7 +290,7 @@ FlexGen的真正创新在于将多种技术有机组合，形成一个协同工�
 6. ***外围参数优化***：调整GPU-batch和blocksize以最大化吞吐
 
 ***实验结果***
-![这是图片](/images/table2.png "表2")
+![这是图片](/Co-Inference_Tutorial/images/table2.png "表2")
 在模型参数量和已有计算资源差距极为悬殊的情况下，FlexGen展现出来其优势。相比于DeepSpeed、Accelerate，吞吐提升100倍，首次在单16GB GPU上达到1 token/s吞吐。
 
 ## 3实现流程及对应核心代码
@@ -362,7 +362,7 @@ FLEXGEN
 ##第一次使用会下载对应模型
 python flexgen_demo.py
 ```
-![这是图片](/images/默认flexgen.png "默认运行")
+![这是图片](/Co-Inference_Tutorial/images/默认flexgen.png "默认运行")
 
 #### 
 3.4.2 代码
@@ -617,22 +617,22 @@ if __name__ == "__main__":
 ```bash
 python onlygpu_demo.py --model facebook/opt-1.3b --max-new-tokens 64
 ```
-![这是图片](/images/显存速度图一.png "显存速度图一")
-![这是图片](/images/显存速度图一附属.png "显存速度图一附属")
+![这是图片](/Co-Inference_Tutorial/images/显存速度图一.png "显存速度图一")
+![这是图片](/Co-Inference_Tutorial/images/显存速度图一附属.png "显存速度图一附属")
 
 #### 4.1.2 运行 FlexGen 脚本（低 GPU 占比策略）
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 10 90 0 100 0 100 --cpu-memory 30
 ```
-![这是图片](/images/显存速度图二.png "显存速度图二")
-![这是图片](/images/显存速度图二附属.png "显存速度图二附属")
+![这是图片](/Co-Inference_Tutorial/images/显存速度图二.png "显存速度图二")
+![这是图片](/Co-Inference_Tutorial/images/显存速度图二附属.png "显存速度图二附属")
 
 #### 4.1.3 运行加大 FlexGen 的 GPU 占比
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 90 10 100 0 100 0 --cpu-memory 30
 ```
-![这是图片](/images//显存速度图三.png "显存速度图三")
-![这是图片](/images/显存速度图三附属.png "显存速度图三附属")
+![这是图片](/Co-Inference_Tutorial/images//显存速度图三.png "显存速度图三")
+![这是图片](/Co-Inference_Tutorial/images/显存速度图三附属.png "显存速度图三附属")
 
 **结论**：FlexGen当GPU占比较小时推理速度略慢，但生成结果质量一致，当GPU占比上升时和纯GPU差距不大。
 
@@ -646,14 +646,14 @@ python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 9
 ```bash
 python onlygpu_demo.py --model facebook/opt-6.7b
 ```
-![这是图片](/images/爆显存图一.png "爆显存图一")
+![这是图片](/Co-Inference_Tutorial/images/爆显存图一.png "爆显存图一")
 
 #### 4.2.2 运行 FlexGen 脚本（高 CPU / 磁盘 Offloading）：
 ```bash
 python flexgen_demo.py --model facebook/opt-6.7b --max-new-tokens 64 --percent 20 80 0 100 0 100 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](/images/大显存速度.png "大显存速度")
-![这是图片](/images/大显存flex.png "大显存")
+![这是图片](/Co-Inference_Tutorial/images/大显存速度.png "大显存速度")
+![这是图片](/Co-Inference_Tutorial/images/大显存flex.png "大显存")
 
 **结论**：纯 GPU 直接报错，无法运行；
 FlexGen 通过将大部分权重放到 CPU，成功加载并生成结果，证明其 “超显存运行能力”。
@@ -668,33 +668,33 @@ FlexGen 通过将大部分权重放到 CPU，成功加载并生成结果，证�
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 5 95 0 100 0 100 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](/images/低gpu.png "低gpu")
+![这是图片](/Co-Inference_Tutorial/images/低gpu.png "低gpu")
 
 #### 4.3.1 平衡策略：
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 70 30 0 100 0 100 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](/images/平衡.png "平衡")
+![这是图片](/Co-Inference_Tutorial/images/平衡.png "平衡")
 
 #### 4.3.1 高 GPU 占比：
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 90 10 100 0 100 0 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](/images/极限.png "极限")
+![这是图片](/Co-Inference_Tutorial/images/极限.png "极限")
 
 
 **结论**：随着 GPU 占比升高，GPU 显存占用递增，推理时间递减（灵活性体现）
 
 ## 5 常遇问题
 若首次安装conda可能需手动接受条款
-![这是图片](/images/接受条款.png "接受条款")
+![这是图片](/Co-Inference_Tutorial/images/接受条款.png "接受条款")
 ```bash
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 ```
 
 若无法找到某个依赖如
-![这是图片](/images/pip版本低.png "pip版本低")
+![这是图片](/Co-Inference_Tutorial/images/pip版本低.png "pip版本低")
 ```bash
 pip install --upgrade pip
 ```
@@ -734,6 +734,6 @@ FlexGen通过以下核心技术实现了单GPU上的高吞吐大语言模型推�
 
 ## 7 多设备协同延申（有兴趣同学可以尝试）
 上述FlexGen本质上事单设备上参数的卸载协同，真实边缘场景下还可以通过设备间协同来实现高效推理。例如利用PP模式，在多设备间流水执行，参考资料如下：
-![这是图片](/images/prima.png "Prima.cpp")
+![这是图片](/Co-Inference_Tutorial/images/prima.png "Prima.cpp")
 - https://gitee.com/zonghang-li/prima.cpp
 - https://arxiv.org/abs/2504.08791
