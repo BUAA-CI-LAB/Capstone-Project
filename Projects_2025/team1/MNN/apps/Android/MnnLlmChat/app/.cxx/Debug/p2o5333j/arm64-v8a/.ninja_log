@@ -1,0 +1,13 @@
+# ninja log v5
+83	1728	7893821645699404	CMakeFiles/mnnllmapp.dir/crash_util.cpp.o	917f06c2fb21915b
+339	2058	7893821649023398	CMakeFiles/mnnllmapp.dir/video/image_utils.cpp.o	c0af7d575b3e0a79
+161	2165	7893821650063861	CMakeFiles/mnnllmapp.dir/diffusion_session.cpp.o	1b2792cb6697a056
+299	2319	7893821651570800	CMakeFiles/mnnllmapp.dir/video/byte_buffer_decoder.cpp.o	79abea997beae458
+203	3026	7893821658597814	CMakeFiles/mnnllmapp.dir/video/video_decoder.cpp.o	7668500d11abbafa
+389	3282	7893821661095653	CMakeFiles/mnnllmapp.dir/video/video_processor.cpp.o	3c238786a4108bc8
+255	4555	7893821673740694	CMakeFiles/mnnllmapp.dir/processor.cpp.o	4aaf2a249cc4ea17
+47	4723	7893821675476408	CMakeFiles/mnnllmapp.dir/diffusion_jni.cpp.o	f36243d1f06f7bea
+1	5372	7893821681921251	CMakeFiles/mnnllmapp.dir/llm_mnn_jni.cpp.o	f9fb35f7e903fd63
+119	6037	7893821688488177	CMakeFiles/mnnllmapp.dir/llm_session.cpp.o	f4477ae88170f855
+6038	6391	7893821692165014	D:/yang/Projects/MNN/apps/Android/MnnLlmChat/app/build/intermediates/cxx/Debug/p2o5333j/obj/arm64-v8a/libmnnllmapp.so	86f7e54c94c8e271
+94	2458	7899343949834834	D:/yang/Projects/MNN/apps/Android/MnnLlmChat/app/build/intermediates/cxx/Debug/p2o5333j/obj/arm64-v8a/libmnnllmapp.so	86f7e54c94c8e271

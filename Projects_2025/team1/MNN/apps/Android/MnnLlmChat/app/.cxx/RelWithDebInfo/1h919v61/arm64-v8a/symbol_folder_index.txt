@@ -1,0 +1,1 @@
+D:\yang\Projects\MNN\apps\Android\MnnLlmChat\app\build\intermediates\cxx\RelWithDebInfo\1h919v61\obj\arm64-v8a
