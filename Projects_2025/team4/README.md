@@ -8,7 +8,7 @@
 
 - [PeakChat下载体验](https://github.com/oopb/PeakClass/releases/tag/apk)
 
-  gguf模型下载：[qwen2.5-1.5b-instruct-q4_k_m.gguf](https://cdn-lfs-cn-1.modelscope.cn/prod/lfs-objects/6a/1a/2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e?filename=qwen2.5-1.5b-instruct-q4_k_m.gguf&namespace=Qwen&repository=Qwen2.5-1.5B-Instruct-GGUF&revision=master&tag=model&auth_key=1768281214-a7d0f25bf7ec48fcac3bfe86ea6b0fc5-0-cf50c0c5b474c0a99add610276d7e1a8)
+  gguf模型下载：[qwen2.5-1.5b-instruct-q4_k_m.gguf](https://modelscope.cn/models/Qwen/Qwen2.5-1.5B-Instruct-GGUF)
 
 - [演示视频](https://github.com/oopb/PeakClass/releases/tag/video)
 
