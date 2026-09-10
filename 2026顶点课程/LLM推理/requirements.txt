@@ -1,0 +1,3 @@
+# 先按 README 为 CPU 或 CUDA 安装 PyTorch。
+transformers==4.51.3
+safetensors>=0.4.3
