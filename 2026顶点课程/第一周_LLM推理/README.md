@@ -1,4 +1,4 @@
-# LLM 推理
+# 第一周：LLM 推理
 
 - [LLM 推理课件](LLM推理tutorial.pptx)
 - [Qwen 推理调试脚本](qwen_inference.py)
