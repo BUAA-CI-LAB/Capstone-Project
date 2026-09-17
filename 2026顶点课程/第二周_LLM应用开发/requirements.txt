@@ -1,0 +1,7 @@
+# PyTorch 按 README 单独安装 CPU 或 CUDA wheel，沿用第一周版本。
+transformers==4.51.3
+safetensors>=0.4.3
+openai==1.109.1
+pydantic==2.11.7
+fastapi==0.116.1
+uvicorn==0.35.0
