@@ -16,13 +16,13 @@ python qwen_inference.py --model ./models/Qwen2.5-1.5B-Instruct --device cpu --m
 
 - 推理脚本（`.py`）。
 - 运行结果（JSON 或完整终端日志），包含输入、输出、推理时间、token 数，以及 hidden states 的形状和部分数值。
-- 按下方模板填写 `提交说明.md`，与脚本、运行结果一起提交。
+- 按下方模板填写 `report.md`，与脚本、运行结果一起提交。
 
 无需提交模型权重和虚拟环境。
 
 ## 提交模板
 
-复制以下内容到 `提交说明.md`，将占位内容替换为实际运行信息即可。
+复制以下内容到 `report.md`，将占位内容替换为实际运行信息即可。
 
 ````markdown
 # 第一周作业：Qwen 模型推理

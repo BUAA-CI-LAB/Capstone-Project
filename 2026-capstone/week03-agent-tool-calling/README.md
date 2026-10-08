@@ -1,8 +1,8 @@
 # 第三周：Agent 与 Tool Calling
 
-- [Minimal Agent 与 Tool Calling 课件](Minimal%20Agent与Tool%20Calling.pptx)
+- [Minimal Agent 与 Tool Calling 课件](minimal-agent-and-tool-calling.pptx)
 - [完整实现](agent_v0.py)
-- [课后作业](作业.md)
+- [课后作业](assignment.md)
 
 本周从第二周的 LLM 应用出发，补上"循环、状态、工具"，做出一个能跑通 **模型 → 工具 → Observation → 最终回答** 闭环的最小 Agent v0。协议采用 **Prompt 约定的 JSON 决策**，只依赖 Pydantic，用 CPU 或 GPU 均可；先用脚本化模型验证逻辑，再接入真实模型。
 
@@ -14,7 +14,7 @@
 python -m pip install -r requirements.txt
 ```
 
-尚未准备环境或模型的同学，参照[第一周说明](https://github.com/BUAA-CI-LAB/Capstone-Project/blob/master/2026%E9%A1%B6%E7%82%B9%E8%AF%BE%E7%A8%8B/%E7%AC%AC%E4%B8%80%E5%91%A8_LLM%E6%8E%A8%E7%90%86/README.md)完成 PyTorch 安装（`python -m venv .venv` 建独立环境，不需要 conda），再下载模型到本目录：
+尚未准备环境或模型的同学，参照[第一周说明](https://github.com/BUAA-CI-LAB/Capstone-Project/blob/master/2026-capstone/week01-llm-inference/README.md)完成 PyTorch 安装（`python -m venv .venv` 建独立环境，不需要 conda），再下载模型到本目录：
 
 ```bash
 python -m pip install modelscope
@@ -65,4 +65,4 @@ python agent_v0.py --backend hf --model ./models/Qwen2.5-1.5B-Instruct --device 
 
 调用链保存在 `--output` 指定的 JSON 中。重点查看：`status`（`ok`、`max_steps`、`too_many_failures`、`no_progress`）、`answer`、`steps`，以及 `trace` 中每一步的 `decision`（工具名、参数或 final）、`observation`（`status` 与 `result` / `type` / `message`）和 `raw`（模型原文）。
 
-小模型输出格式不稳定、甚至会编造工具调用结果，属于常见现象：用调用链定位卡在哪一步，再判断是模型能力、Prompt 还是解码策略（贪心 vs 采样）的问题。`read_file` 只能读取工作目录内的文件，`calculator` 只放行数字、四则运算与负号，不使用 `eval`。具体任务和提交格式见[作业.md](作业.md)。
+小模型输出格式不稳定、甚至会编造工具调用结果，属于常见现象：用调用链定位卡在哪一步，再判断是模型能力、Prompt 还是解码策略（贪心 vs 采样）的问题。`read_file` 只能读取工作目录内的文件，`calculator` 只放行数字、四则运算与负号，不使用 `eval`。具体任务和提交格式见[assignment.md](assignment.md)。

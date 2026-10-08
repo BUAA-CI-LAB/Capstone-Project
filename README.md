@@ -1,4 +1,4 @@
 # 顶点课程
 
-- [2026](2026顶点课程/README.md)
-- [2025](往年资料/README.md)
+- [2026](2026-capstone/README.md)
+- [2025](archive/README.md)

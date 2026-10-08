@@ -16,21 +16,21 @@
 
 1. **张量并行** (Tensor Parallelism, TP)
 
-![这是图片](./images/图一张量并行（候选）.jpg "张量并行")
+![这是图片](./images/tensor-parallelism-candidate.jpg "张量并行")
     - 原理：将单个张量操作（如矩阵乘法）拆分到多个设备上并行计算
     - 适用场景：单层计算过于庞大
     - **优点**：减少单设备计算负载
     - **缺点**：需要设备间频繁通信，延迟高
 
 2. **流水线并行** (Pipeline Parallelism, PP)
-![这是图片](./images/图二流水线并行PP.jpg "张量并行")
+![这是图片](./images/pipeline-parallelism.jpg "张量并行")
     - 原理：将模型按层拆分为多个阶段，各阶段在不同设备上执行，形成流水线
     - 适用场景：超大规模模型推理
     - **优点**：适合大模型，减少单设备内存压力
     - **缺点**：流水线气泡（bubble）导致设备利用率低
 
 3. **序列并行** (Sequence Parallelism, SP)
-![这是图片](./images/序列并行.png "序列并行")
+![这是图片](./images/sequence-parallelism.png "序列并行")
     - 原理：将长序列输入拆分为多个片段，分别在不同设备上处理
     - 适用场景：长文本生成、超长上下文处理
     - **优点**：适合处理超长序列
@@ -96,7 +96,7 @@ FlexGen的核心目标是：在***单GPU***上实现***高吞吐***大语言模�
 
 
 ### 2.2 三级存储协同架构
-![这是图片](./images/图6.png "三层示意")
+![这是图片](./images/figure-06.png "三层示意")
 三级存储角色定义：
 1. GPU内存：
     - 仅保留当前计算所需的最小张量集
@@ -352,7 +352,7 @@ export HF_ENDPOINT=https://hf-mirror.com
 ##第一次使用会下载对应模型
 python flexgen_demo.py
 ```
-![这是图片](./images/默认flexgen.png "默认运行")
+![这是图片](./images/default-flexgen.png "默认运行")
 
 ## 4 项目框架
 
@@ -482,22 +482,22 @@ for i in range(gen_len):
 ```bash
 python onlygpu_demo.py --model facebook/opt-1.3b --max-new-tokens 64
 ```
-![这是图片](./images/显存速度图一.png "显存速度图一")
-![这是图片](./images/显存速度图一附属.png "显存速度图一附属")
+![这是图片](./images/vram-speed-01.png "显存速度图一")
+![这是图片](./images/vram-speed-01-details.png "显存速度图一附属")
 
 #### 5.1.2 运行 FlexGen 脚本（低 GPU 占比策略）
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 10 90 0 100 0 100 --cpu-memory 30
 ```
-![这是图片](./images/显存速度图二.png "显存速度图二")
-![这是图片](./images/显存速度图二附属.png "显存速度图二附属")
+![这是图片](./images/vram-speed-02.png "显存速度图二")
+![这是图片](./images/vram-speed-02-details.png "显存速度图二附属")
 
 #### 5.1.3 运行加大 FlexGen 的 GPU 占比
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 90 10 100 0 100 0 --cpu-memory 30
 ```
-![这是图片](./images//显存速度图三.png "显存速度图三")
-![这是图片](./images/显存速度图三附属.png "显存速度图三附属")
+![这是图片](./images//vram-speed-03.png "显存速度图三")
+![这是图片](./images/vram-speed-03-details.png "显存速度图三附属")
 
 **结论**：FlexGen当GPU占比较小时推理速度略慢，但生成结果质量一致，当GPU占比上升时和纯GPU差距不大。
 
@@ -511,14 +511,14 @@ python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 9
 ```bash
 python onlygpu_demo.py --model facebook/opt-6.7b
 ```
-![这是图片](./images/爆显存图一.png "爆显存图一")
+![这是图片](./images/out-of-memory-01.png "爆显存图一")
 
 #### 5.2.2 运行 FlexGen 脚本（高 CPU / 磁盘 Offloading）：
 ```bash
 python flexgen_demo.py --model facebook/opt-6.7b --max-new-tokens 64 --percent 20 80 0 100 0 100 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](./images/大显存速度.png "大显存速度")
-![这是图片](./images/大显存flex.png "大显存")
+![这是图片](./images/high-vram-speed.png "大显存速度")
+![这是图片](./images/high-vram-flexgen.png "大显存")
 
 **结论**：纯 GPU 直接报错，无法运行；
 FlexGen 通过将大部分权重放到 CPU，成功加载并生成结果，证明其 “超显存运行能力”。
@@ -533,33 +533,33 @@ FlexGen 通过将大部分权重放到 CPU，成功加载并生成结果，证�
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 5 95 0 100 0 100 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](./images/低gpu.png "低gpu")
+![这是图片](./images/low-gpu-share.png "低gpu")
 
 #### 5.3.2 平衡策略：
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 70 30 0 100 0 100 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](./images/平衡.png "平衡")
+![这是图片](./images/balanced-offloading.png "平衡")
 
 #### 5.3.3 高 GPU 占比：
 ```bash
 python flexgen_demo.py --model facebook/opt-1.3b --max-new-tokens 64 --percent 90 10 100 0 100 0 --cpu-memory 30 --gpu-memory 8
 ```
-![这是图片](./images/极限.png "极限")
+![这是图片](./images/extreme-offloading.png "极限")
 
 
 **结论**：随着 GPU 占比升高，GPU 显存占用递增，推理时间递减（灵活性体现）
 
 ## 6 常遇问题
 若首次安装conda可能需手动接受条款
-![这是图片](./images/接受条款.png "接受条款")
+![这是图片](./images/accept-terms.png "接受条款")
 ```bash
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
 conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 ```
 
 若无法找到某个依赖如
-![这是图片](./images/pip版本低.png "pip版本低")
+![这是图片](./images/pip-version-issue.png "pip版本低")
 ```bash
 pip install --upgrade pip
 ```

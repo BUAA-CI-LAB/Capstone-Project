@@ -1,6 +1,6 @@
 # 第五周：Agent Memory、Tool 与 MCP
 
-- [下载课程课件](<Agent Memory、Tool与MCP.pptx>)
+- [下载课程课件](<agent-memory-tools-and-mcp.pptx>)
 
 ## 课程内容
 

@@ -1,8 +1,8 @@
 # 第一周：LLM 推理
 
-- [LLM 推理课件](LLM推理tutorial.pptx)
+- [LLM 推理课件](llm-inference-tutorial.pptx)
 - [Qwen 推理调试脚本](qwen_inference.py)
-- [课后作业](作业.md)
+- [课后作业](assignment.md)
 
 课件以 Qwen3-8B 为例讲解自回归生成、hidden states、Prefill / Decode 与 KV cache。本作业使用较小的 **Qwen2.5-1.5B-Instruct**，可选 **Qwen2.5-3B-Instruct**，便于在 CPU 上完成。它们使用 Qwen2 架构，不要照搬课件 Qwen3 的层数、维度或 Q/K norm 代码；实际参数见脚本的 `model_config`。Qwen2.5 不需要 `enable_thinking=False`。
 
