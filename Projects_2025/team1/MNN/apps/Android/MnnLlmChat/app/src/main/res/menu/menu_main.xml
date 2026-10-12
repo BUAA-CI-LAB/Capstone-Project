@@ -1,0 +1,60 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:title="Search"
+        android:iconTint="@color/color_foreground"
+        android:icon="@drawable/baseline_search_24"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/action_kv_q8"
+        android:title="@string/set_kv_q8"
+        android:icon="@drawable/ic_u_download"
+        android:iconTint="@color/color_foreground"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_kv_q4"
+        android:title="@string/set_kv_q4"
+        android:icon="@drawable/ic_u_download"
+        android:iconTint="@color/color_foreground"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_kv_none"
+        android:title="@string/set_kv_none"
+        android:icon="@drawable/ic_u_download"
+        android:iconTint="@color/color_foreground"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_device_cpu"
+        android:title="@string/set_device_cpu"
+        android:icon="@drawable/ic_u_download"
+        android:iconTint="@color/color_foreground"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_device_opencl"
+        android:title="@string/set_device_opencl"
+        android:icon="@drawable/ic_u_download"
+        android:iconTint="@color/color_foreground"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/action_add_models"
+        android:title="@string/add_local_models_title"
+        android:icon="@drawable/ic_u_download"
+        android:iconTint="@color/color_foreground"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_report_crash"
+        android:title="@string/report_crash"
+        app:showAsAction="never" />
+
+</menu>

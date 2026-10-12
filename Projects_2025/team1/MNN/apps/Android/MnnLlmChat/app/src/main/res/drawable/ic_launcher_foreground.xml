@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- 红色圆圈（安全区内） -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#D32F2F"
+        android:strokeWidth="6"
+        android:pathData="
+            M54,20
+            A34,34 0 1,1 53.9,20" />
+
+    <!-- 黑色字母 P（同步缩放并居中） -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="
+            M44,32
+            H58
+            C66,32 70,37 70,45
+            C70,53 66,58 58,58
+            H52
+            V76
+            H44
+            Z
+
+            M52,38
+            V52
+            H58
+            C61,52 64,50 64,45
+            C64,40 61,38 58,38
+            Z" />
+
+</vector>

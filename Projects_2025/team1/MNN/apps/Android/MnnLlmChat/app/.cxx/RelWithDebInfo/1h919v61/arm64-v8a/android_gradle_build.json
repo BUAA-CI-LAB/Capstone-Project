@@ -1,0 +1,40 @@
+{
+  "buildFiles": [
+    "D:\\yang\\Projects\\MNN\\apps\\Android\\MnnLlmChat\\app\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "D:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "D:\\yang\\Projects\\MNN\\apps\\Android\\MnnLlmChat\\app\\.cxx\\RelWithDebInfo\\1h919v61\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "D:\\Android\\Sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "D:\\yang\\Projects\\MNN\\apps\\Android\\MnnLlmChat\\app\\.cxx\\RelWithDebInfo\\1h919v61\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "mnnllmapp::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "mnnllmapp",
+      "output": "D:\\yang\\Projects\\MNN\\apps\\Android\\MnnLlmChat\\app\\build\\intermediates\\cxx\\RelWithDebInfo\\1h919v61\\obj\\arm64-v8a\\libmnnllmapp.so",
+      "runtimeFiles": [
+        "D:\\yang\\Projects\\MNN\\project\\android\\build_64\\lib\\libMNN.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "D:\\Android\\Sdk\\ndk\\27.2.12479018\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "D:\\Android\\Sdk\\ndk\\27.2.12479018\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
