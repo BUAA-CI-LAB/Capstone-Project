@@ -8,4 +8,6 @@
 
 - [第五周：Agent Memory、Tool 与 MCP](week05-agent-memory-tools/README.md)：Agent Memory 机制与架构、工具使用及 MCP 课件与参考资料。
 
+- [第六周第 1 次课：Knowledge 与 RAG（10 月 13 日）](week06-1-knowledge-rag/README.md)：知识处理、检索与证据组织、Agent 检索、系统设计与评估，以及 Agent v1 开放式实践。
+
 [返回课程首页](../README.md)

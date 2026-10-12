@@ -1,0 +1,4 @@
+# 已有前几周环境的同学先直接运行；缺包时再安装，不要求升级现有环境。
+transformers>=4.51,<5
+# torch 沿用第一周安装的 CPU/CUDA 版本，不在此处重新安装。
+# 下载模型可使用已安装的 modelscope，或通过 Hugging Face 获取。
