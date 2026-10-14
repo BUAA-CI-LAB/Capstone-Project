@@ -3,7 +3,7 @@
 本次实验在 DGX Spark 上用 vLLM 部署 Qwen3-1.7B，得到一个 OpenAI 兼容的本地服务。先从命令行和 Python 调用它，再修改启动参数，观察内存、上下文长度和速度的变化。第 7 周把 Agent 迁移到 DGX Spark 时，用的就是这样部署的服务。
 
 - [DGX Spark 登录手册](../dgx-spark-login.md)
-- [课件](dgx-local-serving.pptx)：9 页，每页是 Spark 上的一次实测结果
+- [课程课件](dgx-local-serving.pptx)：17 页，涵盖平台登录、硬件与内存分析、vLLM 部署与参数实验
 - [chat_demo.py](chat_demo.py)：调用服务，统计 TTFT 和生成速度
 - [model_info.py](model_info.py)：读取模型配置，估算权重和 KV cache 大小
 - [requirements.txt](requirements.txt)：vLLM 与 OpenAI SDK
