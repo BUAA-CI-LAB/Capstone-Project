@@ -1,0 +1,3 @@
+# 在 DGX Spark 上安装，步骤见 README。torch 随 vllm 一起安装。
+vllm==0.31.0
+openai
