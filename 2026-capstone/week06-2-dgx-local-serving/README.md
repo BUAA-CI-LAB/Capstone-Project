@@ -1,4 +1,4 @@
-# 第六周第 2 次课：DGX Spark 本地部署与 vLLM
+# 第六周第 2 次课：DGX Spark 本地部署与 vLLM（第7周作业任务）
 
 本次实验在 DGX Spark 上用 vLLM 部署 Qwen3-1.7B，得到一个 OpenAI 兼容的本地服务。先从命令行和 Python 调用它，再修改启动参数，观察内存、上下文长度和速度的变化。第 7 周把 Agent 迁移到 DGX Spark 时，用的就是这样部署的服务。
 
