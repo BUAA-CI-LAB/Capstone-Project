@@ -12,8 +12,8 @@
 
 - [第六周第 2 次课：DGX Spark 本地部署与 vLLM](week06-2-dgx-local-serving/README.md)：在 Spark 上配置环境、用 vLLM 部署 Qwen3-1.7B，并通过启动参数观察内存、上下文与速度。
 
-- [第七周：模型服务与性能优化](week07-serving-and-optimization/README.md)：以 vLLM 为例，介绍组批与调度、并发与性能取舍、队列与请求管理，以及性能观测与调优思路。
+  - [DGX Spark 登录手册](dgx-spark-login.md)：账号登录、SSH 密钥、文件传输、Python 环境与共享模型。
 
-- [DGX Spark 登录手册](dgx-spark-login.md)：账号登录、SSH 密钥、文件传输、Python 环境与共享模型。
+- [第七周：模型服务与性能优化](week07-serving-and-optimization/README.md)：以 vLLM 为例，介绍组批与调度、并发与性能取舍、队列与请求管理，以及性能观测与调优思路。
 
 [返回课程首页](../README.md)
