@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/assistant_text_read"
+        android:title="@string/assistant_text_read_play"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/assistant_text_read_stop"
+        android:title="@string/assistant_text_read_play_stop"
+        app:showAsAction="never" />
+</menu>
