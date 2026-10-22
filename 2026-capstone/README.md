@@ -16,4 +16,6 @@
 
 - [第七周第 1 次课：模型服务与性能优化](week07-serving-and-optimization/README.md)：以 vLLM 为例，介绍组批与调度、并发与性能取舍、队列与请求管理，以及性能观测与调优思路。
 
+- [第七周第 2 次课：vLLM Serving 指标与优化实测](week07-2-vllm-serving-metrics/README.md)：统一 TTFT、TPOT、ITL 与吞吐口径，使用评测脚本完成五组单变量对比实验。
+
 [返回课程首页](../README.md)
