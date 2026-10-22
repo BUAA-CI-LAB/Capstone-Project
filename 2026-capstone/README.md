@@ -14,6 +14,6 @@
 
   - [DGX Spark 登录手册](dgx-spark-login.md)：账号登录、SSH 密钥、文件传输、Python 环境与共享模型。
 
-- [第七周：模型服务与性能优化](week07-serving-and-optimization/README.md)：以 vLLM 为例，介绍组批与调度、并发与性能取舍、队列与请求管理，以及性能观测与调优思路。
+- [第七周第 1 次课：模型服务与性能优化](week07-serving-and-optimization/README.md)：以 vLLM 为例，介绍组批与调度、并发与性能取舍、队列与请求管理，以及性能观测与调优思路。
 
 [返回课程首页](../README.md)
