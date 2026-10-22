@@ -1,30 +1,37 @@
 # DGX Spark 学生登录手册
 
-课程组提供一台 NVIDIA DGX Spark（主机名 `spark-b1a6`），用于课程实验和项目开发。本手册说明如何登录、传文件、配置环境，以及使用时的注意事项。
+课程组提供一台 NVIDIA DGX Spark（主机名 `spark-b1a6`），用于课程实验和项目开发。本手册说明如何通过 Tailscale 接入、登录、传文件、配置环境，以及使用时的注意事项。
 
 ## 基本信息
 
 | 项目 | 内容 |
 | --- | --- |
-| 地址 | `10.134.43.123`，端口 **2222** |
+| 地址 | `100.64.231.68`（Tailscale IP），SSH 端口 **22** |
 | 账号 | 每组一个账号，用户名是 `group` 加组号（如第 3 组为 `group3`），密码由课程组发给各组 |
 | 硬件 | NVIDIA GB10（Blackwell），128 GB CPU/GPU 统一内存，20 核 ARM CPU，4 TB 硬盘 |
 | 系统 | Ubuntu 24.04（arm64），NVIDIA 驱动 580，CUDA 13.0 |
 | 权限 | 普通用户：可以用 GPU，不能 `sudo`，不能用 `docker` |
-| 网络 | 必须连北航校园网。校外需先连学校 VPN 客户端 |
+| 连接方式 | 安装 Tailscale 并接受课程组分享链接后，直接通过 SSH 连接 |
+
+## 接入 Tailscale（首次配置）
+
+1. 在自己的电脑上下载并安装 Tailscale 客户端：<https://tailscale.com/download>（支持 Windows、macOS、Linux）。
+2. 打开 Tailscale 客户端，使用自己的 GitHub、Google 或 Microsoft 账号注册并登录（每位同学使用自己的 Tailscale 账号，不要多人共用）。
+3. 在浏览器打开课程组发放的 **Tailscale Share 邀请链接**，点击 **Accept invite** 接受设备共享。
+4. 确认本机 Tailscale 客户端处于 **Connected** 状态，设备列表中已出现 `dgx-spark`（`100.64.231.68`）。
 
 ## 第一次登录
 
 建议第一次在终端里登录（Windows 用 PowerShell，macOS/Linux 用终端），以便核对主机指纹：
 
 ```bash
-ssh -p 2222 你的用户名@10.134.43.123
+ssh 你的用户名@100.64.231.68
 ```
 
 1. 首次连接会提示确认主机指纹：
 
    ```text
-   The authenticity of host '[10.134.43.123]:2222 ([10.134.43.123]:2222)' can't be established.
+   The authenticity of host '100.64.231.68 (100.64.231.68)' can't be established.
    ED25519 key fingerprint is SHA256:tU2OdrKz7NeDWntH1pqhwDHICBjV4mKXnpW9fqoLIAo.
    Are you sure you want to continue connecting (yes/no/[fingerprint])?
    ```
@@ -33,7 +40,7 @@ ssh -p 2222 你的用户名@10.134.43.123
 
 2. 输入课程组发放的密码（输入时不显示字符），看到 `你的用户名@spark-b1a6:~$` 提示符即登录成功。
 
-同组成员共用这个账号，**请不要修改密码**，否则组员会登录不上。每位组员可以按下一节各自配置 SSH 密钥，之后登录不用再输密码。
+同组成员共用这个服务器账号，**请不要修改密码**，否则组员会登录不上。每位组员可以按下一节各自配置 SSH 密钥，之后登录不用再输密码。
 
 ## 配置 SSH 密钥和简称（推荐）
 
@@ -48,21 +55,21 @@ ssh -p 2222 你的用户名@10.134.43.123
 2. 把公钥放到 Spark 上。macOS/Linux：
 
    ```bash
-   ssh-copy-id -p 2222 你的用户名@10.134.43.123
+   ssh-copy-id 你的用户名@100.64.231.68
    ```
 
    Windows PowerShell 没有 `ssh-copy-id`，改用：
 
    ```powershell
-   type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh -p 2222 你的用户名@10.134.43.123 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+   type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh 你的用户名@100.64.231.68 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
    ```
 
 3. 编辑 SSH 配置文件：macOS/Linux 为 `~/.ssh/config`，Windows 为 `C:\Users\你的电脑用户名\.ssh\config`（没有扩展名）。追加：
 
    ```text
    Host spark
-       HostName 10.134.43.123
-       Port 2222
+       HostName 100.64.231.68
+       Port 22
        User 你的用户名
        IdentityFile ~/.ssh/id_ed25519
        ServerAliveInterval 30
@@ -82,13 +89,13 @@ ssh -p 2222 你的用户名@10.134.43.123
 ## 传输文件
 
 ```bash
-scp -P 2222 data.zip 你的用户名@10.134.43.123:~/        # 上传；scp 的端口参数是大写 -P
-scp spark:~/results/run.json .                          # 配置了 Host spark 后可直接用简称
-scp -r spark:~/results ./results                        # 下载整个目录
-rsync -avP ./project/ spark:~/project/                  # 增量同步（macOS/Linux）
+scp data.zip 你的用户名@100.64.231.68:~/        # 上传文件到个人主目录
+scp spark:~/results/run.json .                  # 配置了 Host spark 后可直接用简称
+scp -r spark:~/results ./results                # 下载整个目录
+rsync -avP ./project/ spark:~/project/          # 增量同步（macOS/Linux）
 ```
 
-Windows 自带 `scp`，没有 `rsync`。也可以用 VS Code 资源管理器拖拽上传，或用 WinSCP / FileZilla（SFTP 协议，端口 2222）。
+Windows 自带 `scp`，没有 `rsync`。也可以用 VS Code / Cursor 资源管理器拖拽上传，或用 WinSCP / FileZilla（SFTP 协议，端口 22）。
 
 **Spark 上无法访问 GitHub**（`git clone https://github.com/...` 和 `pip install git+https://github.com/...` 会失败）。请在自己电脑上 clone 后用 `scp`/`rsync` 传上去；Gitee 和 PyPI 镜像可以正常访问。
 
@@ -157,21 +164,5 @@ python -c "from modelscope import snapshot_download; snapshot_download('Qwen/Qwe
 - 同组成员共用一个账号，家目录、进程和 tmux 会话彼此可见。建议每人在家目录下建自己的子目录，结束进程前确认是自己的。
 
 - 账号密码只在本组内使用，不要告诉其他组的同学或借给他人。API Key 等敏感信息不要写进代码提交到仓库。
-
-## 常见问题
-
-**`Connection timed out`**：确认已连接北航校园网；确认端口是 `-p 2222`。
-
-**指纹与本手册不一致**：最常见的原因是漏写了 `-p 2222`，连到了另一台机器。确认端口后仍不一致，不要输入 yes，联系课程组。
-
-**`Permission denied (publickey,password)`**：用户名或密码错误。用户名区分大小写；密码输入时不显示字符。
-
-**`WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`**：只有课程组通知过 Spark 重装系统时，才在自己电脑上执行 `ssh-keygen -R "[10.134.43.123]:2222"` 后重新连接；否则不要连接，先联系课程组。
-
-**忘记密码**：先问同组成员；密码被改掉或泄露时，联系课程组重置。
-
-**`pip install` 很慢或超时**：确认已按上文设置北外镜像；北外也慢时，换成华为云 `https://repo.huaweicloud.com/repository/pypi/simple`。
-
-**`CUDA out of memory` 或系统突然变慢**：用 `free -h` 查看剩余内存，减小 batch size、上下文长度或 `--gpu-memory-utilization`；必要时在群里确认是否有人占用了大量内存。
 
 [返回课程目录](README.md)
