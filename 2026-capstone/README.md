@@ -18,4 +18,6 @@
 
 - [第七周第 2 次课：vLLM Serving 指标与优化实测](week07-2-vllm-serving-metrics/README.md)：统一 TTFT、TPOT、ITL 与吞吐口径，使用评测脚本完成五组单变量对比实验。
 
+- [第九周第 1 次课：KV Cache 与 Context（11 月 3 日）](week09-1-kv-cache-context/README.md)：缓存机制与资源开销、GQA 与 PagedAttention、前缀缓存和 Context 配置，以及 DGX Spark Serving 对比实验。
+
 [返回课程首页](../README.md)
