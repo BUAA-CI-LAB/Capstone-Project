@@ -20,4 +20,6 @@
 
 - [第九周第 1 次课：KV Cache 与 Context（11 月 3 日）](week09-1-kv-cache-context/README.md)：缓存机制与资源开销、GQA 与 PagedAttention、前缀缓存和 Context 配置，以及 DGX Spark Serving 对比实验。
 
+- [第九周第 2 次课：模型量化技术](week09-2-model-quantization/README.md)：权重与 KV Cache 的显存构成、量化的分类与作用范围、FP8 / W8A8 / W4A8 等主流方法，以及 KV Cache 量化。
+
 [返回课程首页](../README.md)
