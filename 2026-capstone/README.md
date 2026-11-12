@@ -22,4 +22,6 @@
 
 - [第九周第 2 次课：模型量化技术](week09-2-model-quantization/README.md)：权重与 KV Cache 的显存构成、量化的分类与作用范围、FP8 / W8A8 / W4A8 等主流方法，以及 KV Cache 量化。
 
+- [第十周第 2 次课：Agent Planning](week10-2-agent-planning/README.md)，以 LangGraph 为例介绍任务分解与显式计划、状态流转、恢复机制与幂等性，以及 Agent v2 项目衔接。
+
 [返回课程首页](../README.md)
