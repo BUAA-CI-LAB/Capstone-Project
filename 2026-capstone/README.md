@@ -22,4 +22,6 @@
 
 - [第九周第 2 次课：模型量化技术](week09-2-model-quantization/README.md)：权重与 KV Cache 的显存构成、量化的分类与作用范围、FP8 / W8A8 / W4A8 等主流方法，以及 KV Cache 量化。
 
+- [第十周第 1 次课：模型量化实践与模型选择](week10-1-quantization-practice/README.md)：量化模型的加载与部署、DGX Spark 上 BF16 与 FP8 的同口径对比，以及基于性能、内存和精度的模型选择。
+
 [返回课程首页](../README.md)
