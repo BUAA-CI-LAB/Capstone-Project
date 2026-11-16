@@ -24,4 +24,8 @@
 
 - [第十周第 1 次课：模型量化实践与模型选择](week10-1-quantization-practice/README.md)：量化模型的加载与部署、DGX Spark 上 BF16 与 FP8 的同口径对比，以及基于性能、内存和精度的模型选择。
 
+- [第十周第 2 次课：Agent Planning](week10-2-agent-planning/README.md)，以 LangGraph 为例介绍任务分解与显式计划、状态流转、恢复机制与幂等性，以及 Agent v2 项目衔接。
+
+- [第十一周：Agent 评估与 Trace](week11-1-agent-eval-trace/README.md)，完成 Agent v2，在统一任务集上比较 Planning 前后的结果，提交评估指标与完整执行记录。
+
 [返回课程首页](../README.md)
