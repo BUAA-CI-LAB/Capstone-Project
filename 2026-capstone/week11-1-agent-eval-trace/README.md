@@ -4,7 +4,7 @@
 
 配套实验默认使用 DGX Spark 上的 Qwen3-8B（BF16），服务名为 `qwen3-8b-bf16`。
 
-- [课程课件](output/Agent_Evaluation_Week11_Lab_BF16.pptx)
+- [课程课件](Agent_Evaluation.pptx)
 - [第十一周作业](assignment.md)
 - [第十一周作业说明](code/README.md)
 - [Agent v2 参考实现与 Spark 运行说明](code/README.md)
