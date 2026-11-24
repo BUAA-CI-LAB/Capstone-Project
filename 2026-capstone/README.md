@@ -28,6 +28,8 @@
 
 - [第十一周：Agent 评估与 Trace](week11-1-agent-eval-trace/README.md)，完成 Agent v2，在统一任务集上比较 Planning 前后的结果，提交评估指标与完整执行记录。
 
+- [第十二周第 1 次课：计算优化](week12-1-compute-optimization/README.md)：Attention 前向的访存瓶颈，FlashAttention 的分块与 online softmax，PagedAttention 的分页读取与 split-KV，以及 RadixAttention 的前缀复用与缓存感知调度。
+
 - [期末大作业说明](final-project/README.md)：在 DGX Spark 上本地部署推理服务与 Harness，提供 Coding Agent 服务，包括主任务、统一评测与提交要求。
 
 [返回课程首页](../README.md)
