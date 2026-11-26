@@ -30,6 +30,8 @@
 
 - [第十二周第 1 次课：计算优化](week12-1-compute-optimization/README.md)：Attention 前向的访存瓶颈，FlashAttention 的分块与 online softmax，PagedAttention 的分页读取与 split-KV，以及 RadixAttention 的前缀复用与缓存感知调度。
 
+- [第十二周第 2 次课：上下文与缓存优化](week12-2-context-optimization/README.md)：Agent 上下文的开销、缓存复用、上下文压缩与工具结果摘要，以及计算与缓存两个方向的优化对比作业。
+
 - [期末大作业说明](final-project/README.md)：在 DGX Spark 上本地部署推理服务与 Harness，提供 Coding Agent 服务，包括主任务、统一评测与提交要求。
 
 [返回课程首页](../README.md)

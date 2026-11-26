@@ -13,7 +13,7 @@
 
 ## 本周作业
 
-选择计算或缓存方向完成一次优化，按分组提交可复现的 Before/After 对比。测量可以沿用[第七周的测量工具与指标说明](../week07-2-vllm-serving-metrics/README.md)，也可以使用 vLLM 官方测试工具。
+以小组为单位，在计算与缓存两个方向各完成一组优化前后的对比，其中计算方向比较标准 Attention 与 FlashAttention。具体要求见[第 2 次课的作业说明](../week12-2-context-optimization/assignment.md)，12 月 6 日（周日）23:59 前在 SPOC 提交。
 
 ## 资料拓展
 
